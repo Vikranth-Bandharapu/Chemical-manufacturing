@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Manager Dashboard | CHEMCO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="site-wrapper" style="overflow-x: hidden; width: 100%; position: relative; min-height: 100vh;">
+
+    <div class="dashboard-layout">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo" style="display:flex; align-items:center;">
+                    <img src="assets/logo.webp" alt="CHEMCO Logo" style="height: 32px; width: auto; ">
+                </a>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="switchTab('tab-telemetry', this)" class="active"><i class="fa-solid fa-chart-pie"></i> Telemetry Metrics</a></li>
+                <li><a href="#" onclick="switchTab('tab-silos', this)"><i class="fa-solid fa-boxes-stacked"></i> Silo Levels</a></li>
+                <li><a href="#" onclick="switchTab('tab-roster', this)"><i class="fa-solid fa-users-gear"></i> Personnel Roster</a></li>
+                <li><a href="#" onclick="switchTab('tab-qc', this)"><i class="fa-solid fa-clipboard-check"></i> QC Scans</a></li>
+                <li><a href="#" onclick="switchTab('tab-logistics', this)"><i class="fa-solid fa-truck-fast"></i> Logistics Radar</a></li>
+                <li style="margin-top:2rem;"><a href="index.html"><i class="fa-solid fa-arrow-right-from-bracket"></i> Disconnect</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <div class="topbar">
+                <button class="mobile-toggle" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+                <a href="index.html" class="mobile-logo" style="display: none;">
+                    <img src="assets/logo.webp" alt="CHEMCO" style="filter: brightness(0) invert(1);">
+                </a>
+                <div style="display:flex; align-items:center; gap: 1.5rem;">
+                    <h3 style="margin:0;">Plant Manager Command</h3>
+                </div>
+                <div class="topbar-right" style="display:flex; align-items:center; gap:1.5rem;">
+                    <div class="notification-icon">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Telemetry (Overview) -->
+            <div id="tab-telemetry" class="dashboard-tab-content" style="display: block; padding: 2rem; animation: fadeIn 0.3s ease;">
+                <h2 class="text-gradient" style="margin-bottom: 1rem;">Facility Operations</h2>
+                
+                <!-- User Profile -->
+                <div class="user-profile" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding: 1rem; background: rgba(15,20,35,0.4); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); width: fit-content;">
+                    <img src="https://ui-avatars.com/api/?name=Sarah+Jenkins&background=00f0ff&color=050810" alt="Sarah Jenkins">
+                    <div>
+                        <div style="font-weight:700; font-size:1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="profile-name-text">Sarah Jenkins</span>
+                            <span class="profile-email-text" id="userEmailDisplay" style="font-size: 0.9rem; font-weight: 400; color: rgba(255,255,255,0.7);">(guest@chemco.com)</span>
+                        </div>
+                        <div style="font-size:0.9rem; color:var(--accent-color);">UID: MGR_NY_01</div>
+                    </div>
+                </div>
+
+                <!-- 1. KPI Cards -->
+                <div class="stats-grid">
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h4 style="color:var(--accent-color); margin-bottom:0.5rem;"><i class="fa-solid fa-arrow-trend-up"></i> Current Yield</h4>
+                        <div style="font-size:1.8rem; font-weight:700;">94.2%</div>
+                    </div>
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h4 style="color:var(--accent-color); margin-bottom:0.5rem;"><i class="fa-solid fa-microchip"></i> Active Reactors</h4>
+                        <div style="font-size:1.8rem; font-weight:700;">8 <span style="font-size: 1rem; color: rgba(255,255,255,0.5); font-weight: normal;">/ 10</span></div>
+                    </div>
+                    <div class="glass-card" style="padding: 2rem; border-color: rgba(255,180,0,0.4);">
+                        <h4 style="color:#ffb400; margin-bottom:0.5rem;"><i class="fa-solid fa-clipboard-list"></i> Pending QC Scans</h4>
+                        <div style="font-size:1.8rem; font-weight:700; color: #ffb400;">12</div>
+                    </div>
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h4 style="color:var(--accent-color); margin-bottom:0.5rem;"><i class="fa-solid fa-shield-check"></i> Security Incidents</h4>
+                        <div style="font-size:1.8rem; font-weight:700;">0</div>
+                    </div>
+                </div>
+                
+                <!-- 2 & 3. Chart and Alerts Grid -->
+                <div class="charts-grid">
+                    <!-- Sequence Table -->
+                    <div class="glass-card" style="padding: 2rem; overflow-x: auto;">
+                        <h3 style="margin-bottom:1rem;">Active Production Sequence</h3>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Sequence ID</th>
+                                        <th>Compound</th>
+                                        <th>Status</th>
+                                        <th>Command</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="color: #00f0ff;">#SEQ-8901</td>
+                                        <td>Polymer Additive X7</td>
+                                        <td><span class="status active">SYNTHESIZING</span></td>
+                                        <td><a href="404.html" style="color: #00f0ff; text-decoration: underline;">OVERRIDE</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #00f0ff;">#SEQ-8902</td>
+                                        <td>Industrial Solvent C</td>
+                                        <td><span class="status active">COOLING</span></td>
+                                        <td><a href="404.html" style="color: #00f0ff; text-decoration: underline;">OVERRIDE</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="color: #00f0ff;">#SEQ-8903</td>
+                                        <td>Agri-Grade Urea</td>
+                                        <td><span class="status warning">AWAITING QC</span></td>
+                                        <td><a href="404.html" style="color: #00f0ff; text-decoration: underline;">OVERRIDE</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Alerts / Actions -->
+                    <div class="glass-card" style="padding: 2rem; display:flex; flex-direction:column; gap:1rem;">
+                        <h3 style="margin-bottom:1rem;">System Alerts</h3>
+                        
+                        <div style="background: rgba(255,51,102,0.1); border-left: 4px solid #ff3366; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+                            <strong style="color: #ff3366;">REACTOR 3 WARNING</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Temp exceeded limits by 2°C. Auto-cooling engaged.</span>
+                        </div>
+                        
+                        <div style="background: rgba(255,180,0,0.1); border-left: 4px solid #ffb400; padding: 1rem; border-radius: 4px; margin-bottom: 1rem;">
+                            <strong style="color: #ffb400;">LOW INVENTORY ALARM</strong><br>
+                            <span style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Compound 'Toluene' below 15% threshold.</span>
+                        </div>
+
+                        <button onclick="window.location.href='404.html'" class="btn btn-solid" style="width:100%; margin-top: auto;"><i class="fa-solid fa-list-check"></i> View Complete Log</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Silos (mapped from tab-sites) -->
+            <div id="tab-silos" class="dashboard-tab-content" style="display: none; padding: 2rem; animation: fadeIn 0.3s ease;">
+                <h2 class="text-gradient" style="margin-bottom: 2rem;">Silo Levels</h2>
+                
+                <!-- Filter Bar -->
+                <div class="glass-card" style="padding: 2rem; margin-bottom:1.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
+                    <input type="text" placeholder="Search by material, silo ID..." style="flex:1; padding:0.5rem; background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.1); color:white; border-radius:5px;">
+                    <select style="padding:0.5rem; background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.1); color:white; border-radius:5px;"><option>All Materials</option><option>Liquids</option><option>Solids</option><option>Gases</option></select>
+                    <button onclick="window.location.href='404.html'" class="btn btn-solid" style="padding:0.5rem 1rem;">Filter Silos</button>
+                </div>
+                
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 1.5rem;">
+                    <!-- Silo List -->
+                    <div class="glass-card" style="padding: 2rem; overflow-x:auto;">
+                        <h3 style="margin-bottom:1rem;">Storage Units</h3>
+                        <table style="width:100%; border-collapse:collapse; text-align:left;">
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><th style="padding:0.5rem;">Silo ID</th><th style="padding:0.5rem;">Material</th><th style="padding:0.5rem;">Capacity</th><th style="padding:0.5rem;">Status</th></tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.5rem;">#SILO-01</td><td style="padding:0.5rem;">Ammonia (Liq)</td><td style="padding:0.5rem;">82%</td><td style="padding:0.5rem; color:#00ff88;">Optimal</td></tr>
+                            <tr><td style="padding:0.5rem;">#SILO-02</td><td style="padding:0.5rem;">Toluene</td><td style="padding:0.5rem;">12%</td><td style="padding:0.5rem; color:#ffaa00;">Low Stock</td></tr>
+                        </table>
+                    </div>
+                    <!-- Distribution Chart -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Overall Capacity</h3>
+                        <div style="height:200px; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(255,255,255,0.2);">
+                            <div style="display:flex; align-items:center; justify-content:center; gap:2rem;">
+                                <div style="width:120px; height:120px; border-radius:50%; background: conic-gradient(#00ff88 0% 75%, #ffaa00 75% 90%, #ff3366 90% 100%); display:flex; align-items:center; justify-content:center;">
+                                    <div style="width:90px; height:90px; border-radius:50%; background:var(--bg-color); display:flex; align-items:center; justify-content:center; font-weight:bold;">75%</div>
+                                </div>
+                                <div style="display:flex; flex-direction:column; gap:0.5rem; text-align:left;">
+                                    <div style="font-size:0.8rem;"><span style="color:#00ff88;">■</span> Optimal (75%)</div>
+                                    <div style="font-size:0.8rem;"><span style="color:#ffaa00;">■</span> Warning (15%)</div>
+                                    <div style="font-size:0.8rem;"><span style="color:#ff3366;">■</span> Empty (10%)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <!-- Pending deliveries -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem; color:#ffaa00;">Inbound Deliveries</h3>
+                        <div><strong>Truck #402</strong> - Toluene <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">ETA: 45 mins</span></div>
+                    </div>
+                    <!-- Offline Silos -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem; color:#ff3366;">Sensor Fault</h3>
+                        <div><strong>#SILO-04</strong> - Benzene <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Level sensor offline</span></div>
+                    </div>
+                    <!-- Bulk Actions -->
+                    <div class="glass-card" style="padding: 2rem; display:flex; flex-direction:column; gap:0.5rem;">
+                        <h3 style="margin-bottom:1rem;">Valve Actions</h3>
+                        <button onclick="window.location.href='404.html'" class="btn" style="width:100%;"><i class="fa-solid fa-lock"></i> Lock All Intake</button>
+                        <button onclick="window.location.href='404.html'" class="btn" style="width:100%;"><i class="fa-solid fa-rotate"></i> Sync Sensors</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Roster (mapped from tab-alerts) -->
+            <div id="tab-roster" class="dashboard-tab-content" style="display: none; padding: 2rem; animation: fadeIn 0.3s ease;">
+                <h2 class="text-gradient" style="margin-bottom: 2rem;">Personnel Roster</h2>
+                
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom:1.5rem;">
+                    <!-- Shift Stats -->
+                    <div class="glass-card" style="padding: 2rem; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                        <i class="fa-solid fa-users" style="font-size:4rem; color:var(--accent-color); margin-bottom:1rem;"></i>
+                        <h3>Shift Alpha</h3>
+                        <p style="color:rgba(255,255,255,0.7);">142 Active Staff | 12 on Break | 4 Absences</p>
+                    </div>
+                    <!-- Fatigue Chart -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Overtime Hours (Weekly)</h3>
+                        <div style="height:150px; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(255,255,255,0.2);">
+                            <div style="display:flex; align-items:flex-end; gap:0.5rem; height:100%; width:100%; padding-top:20px;">
+                                <div style="flex:1; background:rgba(255,255,255,0.1); height:30%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">M</span></div>
+                                <div style="flex:1; background:var(--accent-color); height:85%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">T</span></div>
+                                <div style="flex:1; background:rgba(255,255,255,0.1); height:50%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">W</span></div>
+                                <div style="flex:1; background:#ff3366; height:100%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">Th</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Live Incidents -->
+                <div class="glass-card" style="padding: 2rem; margin-bottom:1.5rem;">
+                    <h3 style="margin-bottom:1rem;">Safety Reports</h3>
+                    <div style="display:flex; gap:1rem; overflow-x:auto; padding-bottom:1rem;">
+                        <div style="min-width:200px; padding:1rem; background:rgba(255,51,102,0.1); border-left:3px solid #ff3366; border-radius:8px;"><strong>Spill Alert</strong><br><span style="color:var(--accent-color);">Zone: Lab B</span><br><span style="font-size:0.8rem;">2 mins ago</span></div>
+                        <div style="min-width:200px; padding:1rem; background:rgba(255,170,0,0.1); border-left:3px solid #ffaa00; border-radius:8px;"><strong>Missed PPE Scan</strong><br><span style="color:var(--accent-color);">Zone: Entry A</span><br><span style="font-size:0.8rem;">12 mins ago</span></div>
+                        <div style="min-width:200px; padding:1rem; background:rgba(255,170,0,0.1); border-left:3px solid #ffaa00; border-radius:8px;"><strong>High Fatigue</strong><br><span style="color:var(--accent-color);">Tech: J. Smith</span><br><span style="font-size:0.8rem;">18 mins ago</span></div>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <!-- Evac -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem; color:#ff3366;">Emergency Action</h3>
+                        <p style="font-size:0.9rem; color:rgba(255,255,255,0.7); margin-bottom:1rem;">Sound alarm and initiate plant-wide evacuation protocol.</p>
+                        <button onclick="window.location.href='404.html'" class="btn" style="width:100%; background:rgba(255,51,102,0.2); border-color:#ff3366; color:#ff3366;"><i class="fa-solid fa-person-running"></i> Plant Evacuation</button>
+                    </div>
+                    <!-- Partners -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">External Dispatch</h3>
+                        <ul style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+                            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-building-shield text-accent"></i> Plant Security</li>
+                            <li><i class="fa-solid fa-truck-medical text-accent"></i> Local EMS</li>
+                        </ul>
+                    </div>
+                    <!-- Logs -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Shift Supervisor Log</h3>
+                        <div style="font-size:0.9rem; border-left:2px solid var(--accent-color); padding-left:10px;">
+                            "Alpha shift briefed on new safety protocol for Reactor 4." - <em>07:15 AM</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: QC (mapped from tab-clients) -->
+            <div id="tab-qc" class="dashboard-tab-content" style="display: none; padding: 2rem; animation: fadeIn 0.3s ease;">
+                <h2 class="text-gradient" style="margin-bottom: 2rem;">Quality Control (QC) Scans</h2>
+                
+                <!-- Search Bar -->
+                <div class="glass-card" style="padding: 2rem; margin-bottom:1.5rem;">
+                    <input type="text" placeholder="Search batch by ID, compound, or tester..." style="width:100%; padding:1rem; background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.1); color:white; border-radius:8px;">
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 1.5rem;">
+                    <!-- Batches List -->
+                    <div class="glass-card" style="padding: 2rem; overflow-x:auto;">
+                        <h3 style="margin-bottom:1rem;"><i class="fa-solid fa-vial" style="color:#00f0ff;"></i> Recent Batches</h3>
+                        <table style="width:100%; border-collapse:collapse; text-align:left;">
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><th style="padding:0.5rem;">Batch ID</th><th style="padding:0.5rem;">Purity</th><th style="padding:0.5rem;">Status</th></tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.5rem;">BAT-9901</td><td style="padding:0.5rem;">99.8%</td><td style="padding:0.5rem; color:#00ff88;">Passed</td></tr>
+                            <tr><td style="padding:0.5rem;">BAT-9902</td><td style="padding:0.5rem;">92.4%</td><td style="padding:0.5rem; color:#ff3366;">Failed</td></tr>
+                        </table>
+                    </div>
+                    <!-- Pass/Fail Chart -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">QC Pass Rate</h3>
+                        <div style="height:150px; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(255,255,255,0.2);">
+                            <div style="display:flex; align-items:center; justify-content:center; gap:2rem;">
+                                <div style="width:120px; height:120px; border-radius:50%; background: conic-gradient(var(--accent-color) 0% 92%, #ff3366 92% 100%); display:flex; align-items:center; justify-content:center;">
+                                    <div style="width:90px; height:90px; border-radius:50%; background:var(--bg-color); display:flex; align-items:center; justify-content:center; font-weight:bold;">92%</div>
+                                </div>
+                                <div style="display:flex; flex-direction:column; gap:0.5rem; text-align:left;">
+                                    <div style="font-size:0.8rem;"><span style="color:var(--accent-color);">■</span> Passed (92%)</div>
+                                    <div style="font-size:0.8rem;"><span style="color:#ff3366;">■</span> Failed (8%)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <!-- New Scans -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Tests Completed</h3>
+                        <div style="font-size:2.5rem; font-weight:bold; color:var(--accent-color);">420</div>
+                    </div>
+                    <!-- Support -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Pending Reviews</h3>
+                        <div style="font-size:2.5rem; font-weight:bold; color:#ffaa00;">12</div>
+                        <div style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Awaiting manual sign-off</div>
+                    </div>
+                    <!-- Upgrades -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Lab Equipment</h3>
+                        <div>Spectrometer: <span style="color:#00ff88;">Online</span></div>
+                        <div>Chromatograph: <span style="color:var(--accent-color);">Calibration Req</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Logistics (mapped from tab-analytics) -->
+            <div id="tab-logistics" class="dashboard-tab-content" style="display: none; padding: 2rem; animation: fadeIn 0.3s ease;">
+                <h2 class="text-gradient" style="margin-bottom: 2rem;">Logistics Radar</h2>
+                
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 1.5rem;">
+                    <!-- Summary -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Total Outbound</h3>
+                        <div style="font-size:2.5rem; font-weight:bold; color:#00ff88;">42,500 L</div>
+                        <div style="font-size:0.8rem; color:rgba(255,255,255,0.6);">+5% vs last week</div>
+                    </div>
+                    <!-- Freight -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Active Fleet</h3>
+                        <div style="font-size:2.5rem; font-weight:bold; color:#ff3366;">24 Units</div>
+                        <div style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Hazmat class 3 transport</div>
+                    </div>
+                    <!-- Delays -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Transit Delays</h3>
+                        <div style="font-size:2.5rem; font-weight:bold; color:#ffaa00;">3 Trucks</div>
+                        <div style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Weather-related routing</div>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 1.5rem;">
+                    <!-- Trend Chart -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Shipping Volume (Weekly)</h3>
+                        <div style="height:250px; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(255,255,255,0.2);">
+                            <div style="display:flex; align-items:flex-end; gap:0.5rem; height:100%; width:100%; padding-top:20px;">
+                                <div style="flex:1; background:rgba(255,255,255,0.1); height:30%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">W1</span></div>
+                                <div style="flex:1; background:var(--accent-color); height:85%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">W2</span></div>
+                                <div style="flex:1; background:rgba(255,255,255,0.1); height:50%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">W3</span></div>
+                                <div style="flex:1; background:#00ff88; height:100%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">W4</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                        <!-- Response time -->
+                        <div class="glass-card" style="padding: 2rem; flex:1;">
+                            <h3 style="margin-bottom:1rem;">Avg Loading Time</h3>
+                            <div style="font-size:2rem; font-weight:bold; color:var(--accent-color);">42 Mins</div>
+                            <div style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Per transport truck</div>
+                        </div>
+                        <!-- Export -->
+                        <div class="glass-card" style="padding: 2rem; display:flex; flex-direction:column; justify-content:center;">
+                            <button onclick="window.location.href='404.html'" class="btn btn-solid" style="width:100%; margin-bottom:0.5rem;"><i class="fa-solid fa-file-pdf"></i> Shipping Manifests</button>
+                            <button onclick="window.location.href='404.html'" class="btn" style="width:100%;"><i class="fa-solid fa-file-csv"></i> Route Data</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- /main-content -->
+    </div> <!-- /dashboard-layout -->
+    </div> <!-- /site-wrapper -->
+
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.sidebar-menu a').forEach(el => el.classList.remove('active'));
+            if (element) element.classList.add('active');
+            
+            document.querySelectorAll('.dashboard-tab-content').forEach(el => el.style.display = 'none');
+            const target = document.getElementById(tabId);
+            if (target) target.style.display = 'block';
+
+            if (window.innerWidth <= 992) {
+                document.getElementById('dashboardSidebar').classList.remove('active');
+            }
+        }
+
+        // Toggle Sidebar
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('dashboardSidebar');
+        if (sidebarToggle && sidebar) {
+            sidebarToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+        }
+        
+        // Display Email
+        const userEmail = localStorage.getItem('chemcoUserEmail') || 'guest@chemco.com';
+        const emailDisplay = document.getElementById('userEmailDisplay');
+        if (emailDisplay) {
+            emailDisplay.textContent = '(' + userEmail + ')';
+        }
+    </script>
+</body>
+</html>
+
+

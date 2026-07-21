@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Global Operations Command | CHEMCO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="site-wrapper" style="overflow-x: hidden; width: 100%; position: relative; min-height: 100vh;">
+
+    <div class="dashboard-layout">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo" style="display:flex; align-items:center;">
+                    <img src="assets/logo.webp" alt="CHEMCO Logo" style="height: 32px; width: auto; ">
+                </a>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="switchTab('tab-overview', this)" class="active"><i class="fa-solid fa-satellite-dish"></i> Global Uplink</a></li>
+                <li><a href="#" onclick="switchTab('tab-tracking', this)"><i class="fa-solid fa-users-viewfinder"></i> Operator Tracking</a></li>
+                <li><a href="#" onclick="switchTab('tab-nodes', this)"><i class="fa-solid fa-industry"></i> Facility Nodes</a></li>
+                <li><a href="#" onclick="switchTab('tab-telemetry', this)"><i class="fa-solid fa-chart-line"></i> Telemetry Data</a></li>
+                <li><a href="#" onclick="switchTab('tab-logs', this)"><i class="fa-solid fa-shield-halved"></i> Security Logs</a></li>
+                <li style="margin-top:2rem;"><a href="index.html"><i class="fa-solid fa-arrow-right-from-bracket"></i> Disconnect</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Topbar -->
+            <div class="topbar">
+                <button class="mobile-toggle" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
+                <a href="index.html" class="mobile-logo" style="display: none;">
+                    <img src="assets/logo.webp" alt="CHEMCO" style="filter: brightness(0) invert(1);">
+                </a>
+                <div style="display:flex; align-items:center; gap: 1.5rem;">
+                    <h3 style="margin:0;">Global Operations Command</h3>
+                </div>
+                <div class="topbar-right" style="display:flex; align-items:center; gap:1.5rem;">
+                    <div class="notification-icon">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Overview -->
+            <div id="tab-overview" class="dashboard-tab-content" style="display: block; padding: 2rem; animation: fadeIn 0.3s ease;">
+                <h2 class="text-gradient" style="margin-bottom: 1rem;">System Overview</h2>
+                
+                <!-- User Profile -->
+                <div class="user-profile" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding: 1rem; background: rgba(15,20,35,0.4); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); width: fit-content;">
+                    <i class="fa-solid fa-circle-user" style="font-size: 48px; color: var(--accent-color);"></i>
+                    <div>
+                        <div style="font-weight:700; font-size:1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="profile-name-text">Global Sys_Admin</span>
+                            <span class="profile-email-text" id="userEmailDisplay" style="font-size: 0.9rem; font-weight: 400; color: rgba(255,255,255,0.7);">(admin@chemco.com)</span>
+                        </div>
+                        <div style="font-size:0.9rem; color:var(--accent-color);">UID: ADMIN_001</div>
+                    </div>
+                </div>
+
+                <!-- 1. KPI Cards -->
+                <div class="stats-grid">
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h4 style="color:var(--accent-color); margin-bottom:0.5rem;"><i class="fa-solid fa-industry"></i> Facility Nodes</h4>
+                        <div style="font-size:1.8rem; font-weight:700;">14 <span style="font-size: 1rem; color: #00f0ff; font-weight: normal;">ONLINE</span></div>
+                    </div>
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h4 style="color:var(--accent-color); margin-bottom:0.5rem;"><i class="fa-solid fa-users"></i> Active Personnel</h4>
+                        <div style="font-size:1.8rem; font-weight:700;">4,250</div>
+                    </div>
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h4 style="color:var(--accent-color); margin-bottom:0.5rem;"><i class="fa-solid fa-database"></i> Global Output (YTD)</h4>
+                        <div style="font-size:1.8rem; font-weight:700;">1.2M <span style="font-size: 1rem; color: rgba(255,255,255,0.5); font-weight: normal;">TONS</span></div>
+                    </div>
+                    <div class="glass-card" style="padding: 2rem; border-color: rgba(255,51,102,0.4);">
+                        <h4 style="color:#ff3366; margin-bottom:0.5rem;"><i class="fa-solid fa-triangle-exclamation"></i> Critical Alerts</h4>
+                        <div style="font-size:1.8rem; font-weight:700; color: #ff3366;">0</div>
+                    </div>
+                </div>
+                
+                <!-- 2 & 3. Chart and Quick Actions Grid -->
+                <div class="charts-grid">
+                    <!-- Facility Table -->
+                    <div class="glass-card" style="padding: 2rem; overflow-x: auto;">
+                        <h3 style="margin-bottom:1rem;">Regional Compliance Matrix</h3>
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Node Region</th>
+                                        <th>Commander</th>
+                                        <th>Efficiency</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>North America (NY)</td>
+                                        <td>S_JENKINS</td>
+                                        <td style="color: #00f0ff;">94.2%</td>
+                                        <td><span class="status active">OPTIMAL</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Europe (Frankfurt)</td>
+                                        <td>M_WEBER</td>
+                                        <td style="color: #00f0ff;">91.5%</td>
+                                        <td><span class="status active">OPTIMAL</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Asia Pacific (SG)</td>
+                                        <td>L_CHEN</td>
+                                        <td style="color: #ffb400;">88.9%</td>
+                                        <td><span class="status warning">MAINTENANCE</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions / Access Logs -->
+                    <div class="glass-card" style="padding: 2rem; display:flex; flex-direction:column; gap:1rem;">
+                        <h3 style="margin-bottom:1rem;">Access Log Stream</h3>
+                        <div class="email-section" style="max-height: 250px; overflow-y: auto;">
+                            <div class="email-item">
+                                <div>
+                                    <div class="email-subject" style="color: #00f0ff;">AUTH_SUCCESS <span class="email-preview">UID: S_JENKINS | 192.168.1.45</span></div>
+                                </div>
+                                <div class="email-time">10:42Z</div>
+                            </div>
+                            <div class="email-item">
+                                <div>
+                                    <div class="email-subject" style="color: #00f0ff;">AUTH_SUCCESS <span class="email-preview">UID: J_TECH | 10.0.0.12</span></div>
+                                </div>
+                                <div class="email-time">10:39Z</div>
+                            </div>
+                            <div class="email-item">
+                                <div>
+                                    <div class="email-subject" style="color: #ff3366;">AUTH_FAILED <span class="email-preview">> INVALID_CREDENTIALS</span></div>
+                                </div>
+                                <div class="email-time">09:15Z</div>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='404.html'" class="btn btn-solid" style="width:100%; margin-top: auto;"><i class="fa-solid fa-download"></i> Export Logs</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Tracking (mapped from tab-sites) -->
+            <div id="tab-tracking" class="dashboard-tab-content" style="display: none; padding: 2rem; animation: fadeIn 0.3s ease;">
+                <h2 class="text-gradient" style="margin-bottom: 2rem;">Operator Tracking</h2>
+                <!-- Filter Bar -->
+                <div class="glass-card" style="padding: 2rem; margin-bottom:1.5rem; display:flex; gap:1rem; flex-wrap:wrap;">
+                    <input type="text" placeholder="Search by operator name, ID, or zone..." style="flex:1; padding:0.5rem; background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.1); color:white; border-radius:5px;">
+                    <select style="padding:0.5rem; background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.1); color:white; border-radius:5px;"><option>All Statuses</option><option>Active</option><option>Break</option><option>Off-Shift</option></select>
+                    <button onclick="window.location.href='404.html'" class="btn btn-solid" style="padding:0.5rem 1rem;">Filter Operators</button>
+                </div>
+                
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 1.5rem;">
+                    <!-- Operator List -->
+                    <div class="glass-card" style="padding: 2rem; overflow-x:auto;">
+                        <h3 style="margin-bottom:1rem;">Deployed Operators</h3>
+                        <table style="width:100%; border-collapse:collapse; text-align:left;">
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><th style="padding:0.5rem;">Operator ID</th><th style="padding:0.5rem;">Current Zone</th><th style="padding:0.5rem;">Biometrics</th><th style="padding:0.5rem;">Status</th></tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.5rem;">#OP-104</td><td style="padding:0.5rem;">Reactor Deck B</td><td style="padding:0.5rem;">Normal</td><td style="padding:0.5rem; color:#00ff88;">Active</td></tr>
+                            <tr><td style="padding:0.5rem;">#OP-209</td><td style="padding:0.5rem;">Cooling Tower</td><td style="padding:0.5rem;">Elevated HR</td><td style="padding:0.5rem; color:#ffaa00;">Break Req</td></tr>
+                        </table>
+                    </div>
+                    <!-- Status Chart -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Workforce Fatigue Levels</h3>
+                        <div style="height:200px; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(255,255,255,0.2);"><div style="display:flex; align-items:center; justify-content:center; gap:2rem;">
+                        <div style="width:120px; height:120px; border-radius:50%; background: conic-gradient(#00ff88 0% 85%, #ffaa00 85% 95%, #ff3366 95% 100%); display:flex; align-items:center; justify-content:center;">
+                            <div style="width:90px; height:90px; border-radius:50%; background:var(--bg-color); display:flex; align-items:center; justify-content:center; font-weight:bold;">85%</div>
+                        </div>
+                        <div style="display:flex; flex-direction:column; gap:0.5rem; text-align:left;">
+                            <div style="font-size:0.8rem;"><span style="color:#00ff88;">■</span> Optimal (85%)</div>
+                            <div style="font-size:0.8rem;"><span style="color:#ffaa00;">■</span> Warning (10%)</div>
+                            <div style="font-size:0.8rem;"><span style="color:#ff3366;">■</span> Critical (5%)</div>
+                        </div></div></div>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <!-- Pending -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem; color:#ffaa00;">Pending Clearances</h3>
+                        <div><strong>#OP-331</strong> - Sector 4 <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Awaiting HAZMAT auth</span></div>
+                    </div>
+                    <!-- Offline -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem; color:#ff3366;">Lost Signal</h3>
+                        <div><strong>#OP-112</strong> - Sub-level 2 <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Tracker unreachable (3m)</span></div>
+                    </div>
+                    <!-- Bulk Actions -->
+                    <div class="glass-card" style="padding: 2rem; display:flex; flex-direction:column; gap:0.5rem;">
+                        <h3 style="margin-bottom:1rem;">Shift Actions</h3>
+                        <button onclick="window.location.href='404.html'" class="btn" style="width:100%;"><i class="fa-solid fa-bullhorn"></i> Broadcast Evac</button>
+                        <button onclick="window.location.href='404.html'" class="btn" style="width:100%;"><i class="fa-solid fa-rotate"></i> Ping All Trackers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Nodes (mapped from tab-alerts) -->
+            <div id="tab-nodes" class="dashboard-tab-content" style="display: none; padding: 2rem; animation: fadeIn 0.3s ease;">
+                <h2 class="text-gradient" style="margin-bottom: 2rem;">Facility Nodes</h2>
+                
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom:1.5rem;">
+                    <!-- Map Stats -->
+                    <div class="glass-card" style="padding: 2rem; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+                        <i class="fa-solid fa-earth-americas" style="font-size:4rem; color:var(--accent-color); margin-bottom:1rem;"></i>
+                        <h3>Global Network</h3>
+                        <p style="color:rgba(255,255,255,0.7);">North America: 4 Active | Europe: 6 Active | Asia: 4 Active</p>
+                    </div>
+                    <!-- Output Chart -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Quarterly Output (Tons)</h3>
+                        <div style="height:150px; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(255,255,255,0.2);">
+                            <div style="display:flex; align-items:flex-end; gap:0.5rem; height:100%; width:100%; padding-top:20px;">
+                                <div style="flex:1; background:rgba(255,255,255,0.1); height:60%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">Q1</span></div>
+                                <div style="flex:1; background:var(--accent-color); height:85%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">Q2</span></div>
+                                <div style="flex:1; background:rgba(255,255,255,0.1); height:50%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">Q3</span></div>
+                                <div style="flex:1; background:#00ff88; height:100%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">Q4</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Live Detections -->
+                <div class="glass-card" style="padding: 2rem; margin-bottom:1.5rem;">
+                    <h3 style="margin-bottom:1rem;">Critical Node Anomalies</h3>
+                    <div style="display:flex; gap:1rem; overflow-x:auto; padding-bottom:1rem;">
+                        <div style="min-width:200px; padding:1rem; background:rgba(255,51,102,0.1); border-left:3px solid #ff3366; border-radius:8px;"><strong>Pressure Spike</strong><br><span style="color:var(--accent-color);">Node: NY-01</span><br><span style="font-size:0.8rem;">2 mins ago</span></div>
+                        <div style="min-width:200px; padding:1rem; background:rgba(255,170,0,0.1); border-left:3px solid #ffaa00; border-radius:8px;"><strong>Temp Warning</strong><br><span style="color:var(--accent-color);">Node: FRA-02</span><br><span style="font-size:0.8rem;">12 mins ago</span></div>
+                        <div style="min-width:200px; padding:1rem; background:rgba(255,170,0,0.1); border-left:3px solid #ffaa00; border-radius:8px;"><strong>Flow Rate Drop</strong><br><span style="color:var(--accent-color);">Node: SG-01</span><br><span style="font-size:0.8rem;">18 mins ago</span></div>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <!-- Lockdown -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem; color:#ff3366;">Emergency Action</h3>
+                        <p style="font-size:0.9rem; color:rgba(255,255,255,0.7); margin-bottom:1rem;">Initiate a global SCADA lockdown across all facilities.</p>
+                        <button onclick="window.location.href='404.html'" class="btn" style="width:100%; background:rgba(255,51,102,0.2); border-color:#ff3366; color:#ff3366;"><i class="fa-solid fa-lock"></i> Global Lockdown</button>
+                    </div>
+                    <!-- Partners -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">External Agencies</h3>
+                        <ul style="list-style:none; padding:0; margin:0; font-size:0.9rem;">
+                            <li style="margin-bottom:0.5rem;"><i class="fa-solid fa-building-shield text-accent"></i> EPA Compliance Link</li>
+                            <li><i class="fa-solid fa-truck-medical text-accent"></i> Global HAZMAT Unit</li>
+                        </ul>
+                    </div>
+                    <!-- Shift Logs -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Command Shift Log</h3>
+                        <div style="font-size:0.9rem; border-left:2px solid var(--accent-color); padding-left:10px;">
+                            "Batch #9004 cleared. Initiating reactor cool down sequence." - <em>06:00 AM</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Telemetry (mapped from tab-clients) -->
+            <div id="tab-telemetry" class="dashboard-tab-content" style="display: none; padding: 2rem; animation: fadeIn 0.3s ease;">
+                <h2 class="text-gradient" style="margin-bottom: 2rem;">Telemetry Data</h2>
+                
+                <!-- Search Bar -->
+                <div class="glass-card" style="padding: 2rem; margin-bottom:1.5rem;">
+                    <input type="text" placeholder="Search sensor by ID, type, or region..." style="width:100%; padding:1rem; background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.1); color:white; border-radius:8px;">
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 1.5rem;">
+                    <!-- Key Sensors List -->
+                    <div class="glass-card" style="padding: 2rem; overflow-x:auto;">
+                        <h3 style="margin-bottom:1rem;"><i class="fa-solid fa-microchip" style="color:#00f0ff;"></i> Core Sensors</h3>
+                        <table style="width:100%; border-collapse:collapse; text-align:left;">
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><th style="padding:0.5rem;">Sensor ID</th><th style="padding:0.5rem;">Reading</th><th style="padding:0.5rem;">Type</th></tr>
+                            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.5rem;">SENS-T-01</td><td style="padding:0.5rem;">450°C</td><td style="padding:0.5rem; color:#00f0ff;">Temperature</td></tr>
+                            <tr><td style="padding:0.5rem;">SENS-P-04</td><td style="padding:0.5rem;">12.4 PSI</td><td style="padding:0.5rem; color:#ffaa00;">Pressure</td></tr>
+                        </table>
+                    </div>
+                    <!-- Chart -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Sensor Deployment</h3>
+                        <div style="height:150px; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(255,255,255,0.2);">
+                            <div style="display:flex; align-items:center; justify-content:center; gap:2rem;">
+                                <div style="width:120px; height:120px; border-radius:50%; background: conic-gradient(var(--accent-color) 0% 60%, #ffaa00 60% 85%, #ff3366 85% 100%); display:flex; align-items:center; justify-content:center;">
+                                    <div style="width:90px; height:90px; border-radius:50%; background:var(--bg-color); display:flex; align-items:center; justify-content:center; font-weight:bold;">12K+</div>
+                                </div>
+                                <div style="display:flex; flex-direction:column; gap:0.5rem; text-align:left;">
+                                    <div style="font-size:0.8rem;"><span style="color:var(--accent-color);">■</span> Temperature (60%)</div>
+                                    <div style="font-size:0.8rem;"><span style="color:#ffaa00;">■</span> Pressure (25%)</div>
+                                    <div style="font-size:0.8rem;"><span style="color:#ff3366;">■</span> Chemical Spec (15%)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <!-- New Sensors -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Sensors Deployed (30d)</h3>
+                        <div style="font-size:2.5rem; font-weight:bold; color:var(--accent-color);">+142</div>
+                    </div>
+                    <!-- Calibration -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Calibration Queue</h3>
+                        <div style="font-size:2.5rem; font-weight:bold; color:#ffaa00;">28</div>
+                        <div style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Sensors awaiting manual recalibration</div>
+                    </div>
+                    <!-- Upgrades -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Firmware Status</h3>
+                        <div>Networked Boards: <span style="color:var(--accent-color);">420 pending</span></div>
+                        <div>Legacy Sensors: <span style="color:var(--accent-color);">12% outdated</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Logs (mapped from tab-analytics) -->
+            <div id="tab-logs" class="dashboard-tab-content" style="display: none; padding: 2rem; animation: fadeIn 0.3s ease;">
+                <h2 class="text-gradient" style="margin-bottom: 2rem;">Security Logs</h2>
+                
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 1.5rem;">
+                    <!-- Summary -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Failed Auth Attempts</h3>
+                        <div style="font-size:2.5rem; font-weight:bold; color:#ff3366;">4,200</div>
+                        <div style="font-size:0.8rem; color:rgba(255,255,255,0.6);">+12% vs last week (botnet scan)</div>
+                    </div>
+                    <!-- Firewall -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Firewall Blocks</h3>
+                        <div style="font-size:2.5rem; font-weight:bold; color:#00ff88;">12.5M</div>
+                        <div style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Packets dropped automatically</div>
+                    </div>
+                    <!-- IPs -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Blacklisted IPs</h3>
+                        <div style="font-size:2.5rem; font-weight:bold; color:#ffaa00;">3,400</div>
+                        <div style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Global threat feed sync</div>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 1.5rem;">
+                    <!-- Trend Chart -->
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem;">Incident Trend (Monthly)</h3>
+                        <div style="height:250px; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(255,255,255,0.2);">
+                            <div style="display:flex; align-items:flex-end; gap:0.5rem; height:100%; width:100%; padding-top:20px;">
+                                <div style="flex:1; background:rgba(255,255,255,0.1); height:30%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">Jan</span></div>
+                                <div style="flex:1; background:var(--accent-color); height:85%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">Feb</span></div>
+                                <div style="flex:1; background:rgba(255,255,255,0.1); height:50%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">Mar</span></div>
+                                <div style="flex:1; background:#00ff88; height:20%; border-radius:4px 4px 0 0; position:relative;"><span style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); font-size:0.7rem;">Apr</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:1.5rem;">
+                        <!-- Response time -->
+                        <div class="glass-card" style="padding: 2rem; flex:1;">
+                            <h3 style="margin-bottom:1rem;">Avg Response Time</h3>
+                            <div style="font-size:2rem; font-weight:bold; color:var(--accent-color);">1.2 Secs</div>
+                            <div style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Automated mitigation</div>
+                        </div>
+                        <!-- Export -->
+                        <div class="glass-card" style="padding: 2rem; display:flex; flex-direction:column; justify-content:center;">
+                            <button onclick="window.location.href='404.html'" class="btn btn-solid" style="width:100%; margin-bottom:0.5rem;"><i class="fa-solid fa-file-pdf"></i> Audit Report</button>
+                            <button onclick="window.location.href='404.html'" class="btn" style="width:100%;"><i class="fa-solid fa-file-csv"></i> PCAP Download</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- /main-content -->
+    </div> <!-- /dashboard-layout -->
+    </div> <!-- /site-wrapper -->
+
+    <script>
+        // Tab Switching Logic
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.sidebar-menu a').forEach(el => el.classList.remove('active'));
+            if (element) element.classList.add('active');
+            
+            document.querySelectorAll('.dashboard-tab-content').forEach(el => el.style.display = 'none');
+            const target = document.getElementById(tabId);
+            if (target) target.style.display = 'block';
+
+            if (window.innerWidth <= 992) {
+                document.getElementById('dashboardSidebar').classList.remove('active');
+            }
+        }
+
+        // Toggle Sidebar
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('dashboardSidebar');
+        if (sidebarToggle && sidebar) {
+            sidebarToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+        }
+        
+        // Display Email
+        const userEmail = localStorage.getItem('chemcoUserEmail') || 'guest@chemco.com';
+        const emailDisplay = document.getElementById('userEmailDisplay');
+        if (emailDisplay) {
+            emailDisplay.textContent = '(' + userEmail + ')';
+        }
+    </script>
+</body>
+</html>
+
+

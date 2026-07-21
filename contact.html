@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | CHEMCO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container-fluid px-4 px-lg-5">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/logo.webp" alt="CHEMCO Logo" style="height: 40px; max-width: 160px; object-fit: contain; filter: drop-shadow(0 0 2px rgba(0,0,0,0.2));">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="innovation.html">Innovation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sustainability.html">Sustainability</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex gap-3">
+                    <a href="login.html" class="btn-custom btn-outline-custom">Login</a>
+                    <a href="signup.html" class="btn-custom btn-primary-custom">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Page Banner -->
+    <section class="page-banner text-center">
+        <div class="container position-relative z-2">
+            <h1 class="text-white font-heading fw-bold mb-3 gs-reveal">Contact Us</h1>
+            <div class="breadcrumb-custom gs-reveal justify-content-center">
+                <a href="index.html">Home</a> <span>/</span> <span class="text-white">Contact</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Intro -->
+    <section class="section-padding bg-light text-center" style="padding-bottom: 0;">
+        <div class="container" data-aos="fade-up">
+            <h5 class="text-orange mb-3 text-uppercase fw-bold">Get In Touch</h5>
+            <h2 class="section-title">We're Here to Help</h2>
+            <p class="lead mt-4 mx-auto mb-5" style="max-width: 700px;">Whether you need product specifications, custom synthesis quotes, or technical support, our global team is ready to assist you.</p>
+        </div>
+    </section>
+
+    <!-- 3. Main Contact Form & 4. Global HQ (side by side) -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="bg-white p-5 rounded shadow-sm">
+                        <h3 class="font-heading fw-bold text-blue mb-4">Send a Message</h3>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Company</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Subject</label>
+                                <select class="form-control" required>
+                                    <option value="">Select subject...</option>
+                                    <option value="quote">Request a Quote</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="general">General Inquiry</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-custom btn-primary-custom w-100">Submit Message <i class="fa-solid fa-paper-plane ms-2"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="bg-blue text-white p-5 rounded shadow-sm h-100 d-flex flex-column justify-content-center">
+                        <h3 class="font-heading fw-bold text-orange mb-4">Global Headquarters</h3>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fa-solid fa-location-dot fa-2x text-orange me-3 mt-1"></i>
+                            <div>
+                                <h5 class="fw-bold mb-1 text-white">Address</h5>
+                                <p class="opacity-75 mb-0">123 Industrial Parkway,<br>Tech District, NY 10001, USA</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fa-solid fa-phone fa-2x text-orange me-3 mt-1"></i>
+                            <div>
+                                <h5 class="fw-bold mb-1 text-white">Phone</h5>
+                                <p class="opacity-75 mb-0">Main: 9876543221<br>Support: +1 (555) 987-6543</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fa-solid fa-envelope fa-2x text-orange me-3 mt-1"></i>
+                            <div>
+                                <h5 class="fw-bold mb-1 text-white">Email</h5>
+                                <p class="opacity-75 mb-0 text-break">support@chemco.com<br>sales@chemcomanufacturing.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Regional Offices -->
+    <section class="section-padding bg-white">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Regional Offices</h2>
+            <div class="row g-4 text-center">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-0 border rounded shadow-sm border-top border-orange border-3 overflow-hidden bg-white">
+                        <img src="assets/hero-banner.webp" class="img-fluid w-100" style="height:150px; object-fit:cover;" alt="Europe">
+                        <div class="p-4">
+                            <h4 class="fw-bold">Europe</h4>
+                            <p class="text-secondary small mb-2">Frankfurt, Germany</p>
+                            <p class="text-secondary small mb-0"><i class="fa-solid fa-phone text-orange me-2"></i>+49 69 123456</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-0 border rounded shadow-sm border-top border-orange border-3 overflow-hidden bg-white">
+                        <img src="assets/hero-banner.webp" class="img-fluid w-100" style="height:150px; object-fit:cover;" alt="Asia">
+                        <div class="p-4">
+                            <h4 class="fw-bold">Asia Pacific</h4>
+                            <p class="text-secondary small mb-2">Singapore</p>
+                            <p class="text-secondary small mb-0"><i class="fa-solid fa-phone text-orange me-2"></i>+65 6789 0123</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="p-0 border rounded shadow-sm border-top border-orange border-3 overflow-hidden bg-white">
+                        <img src="assets/hero-banner.webp" class="img-fluid w-100" style="height:150px; object-fit:cover;" alt="Middle East">
+                        <div class="p-4">
+                            <h4 class="fw-bold">Middle East</h4>
+                            <p class="text-secondary small mb-2">Dubai, UAE</p>
+                            <p class="text-secondary small mb-0"><i class="fa-solid fa-phone text-orange me-2"></i>+971 4 123 4567</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Department Contacts -->
+    <section class="section-padding bg-light">
+        <div class="container text-center">
+            <h3 class="font-heading fw-bold text-blue mb-5" data-aos="fade-up">Direct Department Emails</h3>
+            <div class="row g-4 justify-content-center">
+                <div class="col-auto px-4" data-aos="zoom-in">
+                    <i class="fa-solid fa-cart-shopping text-orange fa-2x mb-2"></i>
+                    <h5 class="fw-bold text-blue">Sales & Orders</h5>
+                    <a href="mailto:sales@chemco.com" class="text-secondary text-decoration-none small">sales@chemco.com</a>
+                </div>
+                <div class="col-auto px-4" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fa-solid fa-wrench text-orange fa-2x mb-2"></i>
+                    <h5 class="fw-bold text-blue">Tech Support</h5>
+                    <a href="mailto:support@chemco.com" class="text-secondary text-decoration-none small">support@chemco.com</a>
+                </div>
+                <div class="col-auto px-4" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fa-solid fa-users text-orange fa-2x mb-2"></i>
+                    <h5 class="fw-bold text-blue">Human Resources</h5>
+                    <a href="mailto:hr@chemco.com" class="text-secondary text-decoration-none small">hr@chemco.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Map -->
+    <section class="bg-white">
+        <!-- Using placeholder image for map to keep it simple and responsive -->
+        <img src="assets/hero-banner.webp" alt="Map" style="width:100%; height:400px; object-fit:cover;">
+    </section>
+
+    <!-- 8. Business Hours -->
+    <section class="section-padding bg-blue text-white text-center">
+        <div class="container" data-aos="fade-up">
+            <i class="fa-solid fa-clock text-orange fa-3x mb-3"></i>
+            <h3 class="font-heading fw-bold text-white mb-4">Business Hours</h3>
+            <p class="lead opacity-75 mb-0">Monday - Friday: 8:00 AM - 6:00 PM (EST)</p>
+            <p class="opacity-75 small">Our chemical emergency response team is available 24/7 globally.</p>
+        </div>
+    </section>
+
+    <!-- 9. FAQ Specific -->
+    <section class="section-padding bg-white">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-aos="fade-up">Logistics & Support FAQ</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="accordion" id="contactFaq">
+                        <div class="accordion-item mb-3 border rounded shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold text-blue" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Do you ship internationally?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
+                                <div class="accordion-body text-secondary">
+                                    Yes, we possess a robust global supply chain capable of shipping industrial chemicals in ISO tanks, drums, and IBCs worldwide safely.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item border rounded shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold text-blue" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    How long does it take to process a custom quote?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#contactFaq">
+                                <div class="accordion-body text-secondary">
+                                    For standard products, quotes are provided within 24 hours. Custom synthesis evaluations typically take 3-5 business days.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. CTA / Socials -->
+    <section class="section-padding bg-orange text-white text-center" style="background-color: var(--clr-orange);">
+        <div class="container" data-aos="zoom-in">
+            <h2 class="font-heading fw-bold text-white mb-4">Connect With Us</h2>
+            <div class="d-flex justify-content-center gap-4">
+                <a href="404.html" class="text-white bg-blue p-3 rounded-circle border border-white fs-4"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="404.html" class="text-white bg-blue p-3 rounded-circle border border-white fs-4"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-logo">
+                        <img src="assets/logo.webp" alt="CHEMCO Logo" style="height: 40px; max-width: 160px; object-fit: contain; filter: drop-shadow(0 0 2px rgba(0,0,0,0.2));">
+                    </div>
+                    <p class="footer-text">Delivering excellence in chemical manufacturing through innovation, sustainability, and uncompromising quality standards globally.</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="404.html">Careers</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="footer-title">Industries</h4>
+                    <ul class="footer-links">
+                        <li><a href="404.html">Pharmaceuticals</a></li>
+                        <li><a href="404.html">Agriculture</a></li>
+                        <li><a href="404.html">Water Treatment</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="footer-title">Contact Info</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fa-solid fa-location-dot"></i><span>123 Industrial Parkway, NY</span></li>
+                        <li><i class="fa-solid fa-phone"></i><span>9876543221</span></li>
+                        <li><i class="fa-solid fa-envelope"></i><span>info@chemco.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="mb-0">&copy; 2026 CHEMCO Manufacturing. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="scrollToTop"><i class="fa-solid fa-arrow-up"></i></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.from(".gs-reveal", { y: 30, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out" });
+        });
+    </script>
+</body>
+</html>

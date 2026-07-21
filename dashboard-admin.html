@@ -15,7 +15,7 @@
         <!-- Sidebar -->
         <aside class="sidebar" id="dashboardSidebar">
             <div class="sidebar-header">
-                <a href="index.html" class="logo" style="display:flex; align-items:center;">
+                <a href="dashboard-admin.html" class="logo" style="display:flex; align-items:center;">
                     <img src="assets/logo.webp" alt="CHEMCO Logo" style="height: 32px; width: auto; ">
                 </a>
             </div>
@@ -34,7 +34,7 @@
             <!-- Topbar -->
             <div class="topbar">
                 <button class="mobile-toggle" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
-                <a href="index.html" class="mobile-logo" style="display: none;">
+                <a href="dashboard-admin.html" class="mobile-logo" style="display: none;">
                     <img src="assets/logo.webp" alt="CHEMCO" style="filter: brightness(0) invert(1);">
                 </a>
                 <div style="display:flex; align-items:center; gap: 1.5rem;">
@@ -148,7 +148,20 @@
                         <button onclick="window.location.href='404.html'" class="btn btn-solid" style="width:100%; margin-top: auto;"><i class="fa-solid fa-download"></i> Export Logs</button>
                     </div>
                 </div>
+                            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem; color:#0dcaf0;">System Health</h3>
+                        <div><strong>CPU Usage</strong> - 42% <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Stable across all clusters</span></div>
+                        <div style="margin-top: 1rem;"><strong>Memory</strong> - 68% <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Within normal parameters</span></div>
+                    </div>
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem; color:#10b981;">Recent Logins</h3>
+                        <div><strong>Admin_02</strong> - 10:45Z <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">IP: 192.168.1.105</span></div>
+                        <div style="margin-top: 1rem;"><strong>Sec_Lead</strong> - 09:12Z <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">IP: 10.0.4.22</span></div>
+                    </div>
+                </div>
             </div>
+
 
             <!-- Tab: Tracking (mapped from tab-sites) -->
             <div id="tab-tracking" class="dashboard-tab-content" style="display: none; padding: 2rem; animation: fadeIn 0.3s ease;">
@@ -414,5 +427,7 @@
     </script>
 </body>
 </html>
+
+
 
 

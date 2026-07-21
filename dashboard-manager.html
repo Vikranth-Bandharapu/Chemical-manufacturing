@@ -15,7 +15,7 @@
         <!-- Sidebar -->
         <aside class="sidebar" id="dashboardSidebar">
             <div class="sidebar-header">
-                <a href="index.html" class="logo" style="display:flex; align-items:center;">
+                <a href="dashboard-manager.html" class="logo" style="display:flex; align-items:center;">
                     <img src="assets/logo.webp" alt="CHEMCO Logo" style="height: 32px; width: auto; ">
                 </a>
             </div>
@@ -34,7 +34,7 @@
             <!-- Topbar -->
             <div class="topbar">
                 <button class="mobile-toggle" id="sidebarToggle"><i class="fa-solid fa-bars"></i></button>
-                <a href="index.html" class="mobile-logo" style="display: none;">
+                <a href="dashboard-manager.html" class="mobile-logo" style="display: none;">
                     <img src="assets/logo.webp" alt="CHEMCO" style="filter: brightness(0) invert(1);">
                 </a>
                 <div style="display:flex; align-items:center; gap: 1.5rem;">
@@ -137,6 +137,18 @@
                         </div>
 
                         <button onclick="window.location.href='404.html'" class="btn btn-solid" style="width:100%; margin-top: auto;"><i class="fa-solid fa-list-check"></i> View Complete Log</button>
+                    </div>
+                </div>
+                            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem; color:#0dcaf0;">Upcoming Shipments</h3>
+                        <div><strong>To: Frankfurt Plant</strong> - 14:00Z <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Status: Loading</span></div>
+                        <div style="margin-top: 1rem;"><strong>To: Singapore Hub</strong> - 18:30Z <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Status: Pending Customs</span></div>
+                    </div>
+                    <div class="glass-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom:1rem; color:#10b981;">Team Performance</h3>
+                        <div><strong>Shift A</strong> - 98% Efficiency <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">Above target</span></div>
+                        <div style="margin-top: 1rem;"><strong>Shift B</strong> - 92% Efficiency <br><span style="font-size:0.8rem; color:rgba(255,255,255,0.6);">On target</span></div>
                     </div>
                 </div>
             </div>
@@ -408,5 +420,7 @@
     </script>
 </body>
 </html>
+
+
 
 

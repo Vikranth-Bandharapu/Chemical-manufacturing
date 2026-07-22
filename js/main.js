@@ -31,10 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbarCollapse = document.getElementById('navbarNav');
     if (navbarCollapse) {
         navbarCollapse.addEventListener('show.bs.collapse', () => {
-            document.body.style.overflow = 'hidden';
+            document.body.classList.add('mobile-menu-open');
         });
         navbarCollapse.addEventListener('hidden.bs.collapse', () => {
-            document.body.style.overflow = '';
+            document.body.classList.remove('mobile-menu-open');
         });
     }
 

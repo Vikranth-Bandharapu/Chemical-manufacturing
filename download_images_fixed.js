@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+const url = require('url');
 
 const assetsDir = path.join(__dirname, 'assets');
 if (!fs.existsSync(assetsDir)) {
@@ -46,14 +47,19 @@ const images = {
     'sust-health.jpg': 'https://loremflickr.com/800/600/occupational,health/all'
 };
 
-function download(url, dest) {
+function download(fileUrl, dest) {
     return new Promise((resolve, reject) => {
-        https.get(url, (response) => {
+        https.get(fileUrl, (response) => {
             if (response.statusCode === 301 || response.statusCode === 302) {
-                return download(response.headers.location, dest).then(resolve).catch(reject);
+                let redirectUrl = response.headers.location;
+                if (!redirectUrl.startsWith('http')) {
+                    const parsedUrl = new url.URL(fileUrl);
+                    redirectUrl = `${parsedUrl.protocol}//${parsedUrl.host}${redirectUrl}`;
+                }
+                return download(redirectUrl, dest).then(resolve).catch(reject);
             }
             if (response.statusCode !== 200) {
-                return reject(new Error('Failed to get ' + url + ' (' + response.statusCode + ')'));
+                return reject(new Error('Failed to get ' + fileUrl + ' (' + response.statusCode + ')'));
             }
             const file = fs.createWriteStream(dest);
             response.pipe(file);
@@ -73,31 +79,34 @@ function download(url, dest) {
 async function run() {
     console.log("Downloading new images...");
     const promises = [];
-    for (const [filename, url] of Object.entries(images)) {
+    for (const [filename, fileUrl] of Object.entries(images)) {
         const dest = path.join(assetsDir, filename);
         promises.push(
-            download(url, dest)
+            download(fileUrl, dest)
                 .then(() => console.log(`Downloaded ${filename}`))
-                .catch(e => console.error(`Error downloading ${filename}:`, e))
+                .catch(e => console.error(`Error downloading ${filename}:`, e.message))
         );
     }
-    await Promise.all(promises);
+    await Promise.allSettled(promises); // Wait for all to finish, even if some fail
     
-    // Copy logo to logo.webp as some places might hardcode logo.webp
-    fs.copyFileSync(path.join(assetsDir, 'logo.jpg'), path.join(assetsDir, 'logo.webp'));
+    // Check if logo.jpg exists before copying
+    if (fs.existsSync(path.join(assetsDir, 'logo.jpg'))) {
+        fs.copyFileSync(path.join(assetsDir, 'logo.jpg'), path.join(assetsDir, 'logo.webp'));
+    }
 
     console.log("Updating HTML files to use clean .jpg names...");
     const htmlFiles = fs.readdirSync('.').filter(f => f.endsWith('.html'));
+    const timestamp = Date.now();
     
     for (const file of htmlFiles) {
         let content = fs.readFileSync(file, 'utf8');
         
         // Match ANY assets/name.webp, assets/name-final4.jpg etc, and replace with assets/name.jpg
-        content = content.replace(/assets\/([a-zA-Z0-9_-]+?)(?:-final|-final2|-final3|-final4)?\.(webp|jpg|png)(\?v=\d+)?/g, (match, basename) => {
+        content = content.replace(/assets\/([a-zA-Z0-9_-]+?)(?:-final|-final2|-final3|-final4)?\.(webp|jpg|png)(?:\?v=\d+)?/g, (match, basename) => {
             // Special case for logo.webp if needed, but we can just map it to logo.jpg
             let cleanName = basename;
-            if (cleanName === 'logo') return 'assets/logo.jpg';
-            return `assets/${cleanName}.jpg`;
+            if (cleanName === 'logo') return `assets/logo.jpg?v=${timestamp}`;
+            return `assets/${cleanName}.jpg?v=${timestamp}`;
         });
         
         fs.writeFileSync(file, content);

@@ -41,9 +41,7 @@
                     <h3 style="margin:0;">Global Operations Command</h3>
                 </div>
                 <div class="topbar-right" style="display:flex; align-items:center; gap:1.5rem;">
-                    <div class="notification-icon">
-                        <i class="fa-solid fa-bell"></i>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -162,6 +160,44 @@
                 </div>
             </div>
 
+
+            
+                <!-- Added Content per Request -->
+                <div style="margin-top: 2rem;">
+                    <h2 class="text-gradient" style="margin-bottom: 1.5rem;">Global Supply Chain Pulse</h2>
+                    <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                        <div class="glass-card" style="padding: 1.5rem; border-left: 3px solid #0dcaf0;">
+                            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Raw Material Inbound</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; margin-top: 0.5rem;">12,450 T</div>
+                            <div style="font-size: 0.8rem; color: #10b981; margin-top: 0.5rem;"><i class="fa-solid fa-arrow-trend-up"></i> +4.2% vs Last Week</div>
+                        </div>
+                        <div class="glass-card" style="padding: 1.5rem; border-left: 3px solid #10b981;">
+                            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Production Yield</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; margin-top: 0.5rem;">98.7%</div>
+                            <div style="font-size: 0.8rem; color: #10b981; margin-top: 0.5rem;"><i class="fa-solid fa-check"></i> Target Exceeded</div>
+                        </div>
+                        <div class="glass-card" style="padding: 1.5rem; border-left: 3px solid var(--accent-color);">
+                            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Outbound Shipments</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; margin-top: 0.5rem;">42 Active</div>
+                            <div style="font-size: 0.8rem; color: #ffb400; margin-top: 0.5rem;"><i class="fa-solid fa-clock"></i> 2 Delayed (Weather)</div>
+                        </div>
+                        <div class="glass-card" style="padding: 1.5rem; border-left: 3px solid #ff3366;">
+                            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Inventory Alerts</div>
+                            <div style="font-size: 1.5rem; font-weight: bold; margin-top: 0.5rem;">3 Items</div>
+                            <div style="font-size: 0.8rem; color: #ff3366; margin-top: 0.5rem;"><i class="fa-solid fa-triangle-exclamation"></i> Below minimum threshold</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card" style="margin-top: 2rem; padding: 2rem;">
+                    <h3 style="margin-bottom: 1.5rem;">Recent Security Audits</h3>
+                    <table style="width:100%; border-collapse:collapse; text-align:left;">
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><th style="padding:0.75rem;">Facility</th><th style="padding:0.75rem;">Date</th><th style="padding:0.75rem;">Auditor</th><th style="padding:0.75rem;">Score</th><th style="padding:0.75rem;">Status</th></tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.75rem;">North America (NY)</td><td style="padding:0.75rem;">Oct 12, 2026</td><td style="padding:0.75rem;">Ext_TUV</td><td style="padding:0.75rem;">98/100</td><td style="padding:0.75rem; color:#00ff88;">PASSED</td></tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:0.75rem;">Europe (Frankfurt)</td><td style="padding:0.75rem;">Sep 28, 2026</td><td style="padding:0.75rem;">Int_SecOps</td><td style="padding:0.75rem;">95/100</td><td style="padding:0.75rem; color:#00ff88;">PASSED</td></tr>
+                        <tr><td style="padding:0.75rem;">Asia Pacific (SG)</td><td style="padding:0.75rem;">Sep 15, 2026</td><td style="padding:0.75rem;">Ext_SGS</td><td style="padding:0.75rem;">82/100</td><td style="padding:0.75rem; color:#ffaa00;">MINOR FINDINGS</td></tr>
+                    </table>
+                </div>
 
             <!-- Tab: Tracking (mapped from tab-sites) -->
             <div id="tab-tracking" class="dashboard-tab-content" style="display: none; padding: 2rem; animation: fadeIn 0.3s ease;">
